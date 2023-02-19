@@ -1,10 +1,14 @@
 import Head from 'next/head'
+import { Button, Paragraph, Headlines } from '@/components'
+import cn from 'classnames'
+import styles from "../styles/Home.module.css"
+import { withLayout } from '@/layout/Layout'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import { withLayout } from '@/layout/layout'
 
-const inter = Inter({ subsets: ['latin'] })
+import { social, service } from '../mock/mock.data'
+import { Service } from '@/components/service/Service'
+
+
 
 function Home() {
   return (
@@ -15,12 +19,56 @@ function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className={styles.main}>
+        <div className={styles.headerBlock}>
+          <div className={styles.wrapperHeaderBlock}>
+            <div className={cn(styles.headerBlockText, styles.line)}>
+              <Headlines tag='h1'>LAWA</Headlines>
+              <Paragraph type='sub-title-text-dull'>Ваша маркетинг команда для роста бизнеса в эпоху персонализации</Paragraph>
+              <Button>Связаться с нами</Button>
+            </div>
+            <div className={styles.headerBlockImages}>
+              <span className={styles.lineTwo}></span>
+              <Image src="/images/lawa.png" alt="lawa" width={450} height={450} />
+            </div>
+            <div className={styles.socialBlock}>
+              <div className={styles.socialBlockWrapper}>
+                <div className={styles.socialItemBlock}>
+                  {social.map((social, key) => (
+                    <div key={key} className={styles.socialItem}>
+                      <Image src={social.img} alt="Social Icon" width={17} height={17} />
+                      <a href={social.link}></a>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.socialTimeWork}>
+                  <span>Время работы:</span>
+                  <span>24/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.serviceBlock}>
+          <div className={styles.wrapperServiceBlock}>
+          <div className={styles.serviceTitle}>
+              <Headlines tag='h2'>Наши Услуги</Headlines>
+          </div>
+          <div className={styles.services}>
+            {service.map((item, key) => (
+              <Service key={key} img={item.img} link={item.link}>{item.text}</Service>
+            ))}
+          </div>
+          <div className={styles.servicesButton}>
+              <Button>Смотреть все</Button>
+          </div>
+        </div>
+        </div>
 
       </main>
     </>
   )
 }
 
-export default withLayout(Home)
 
+export default withLayout(Home)

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
 
 export interface LayoutProps {
