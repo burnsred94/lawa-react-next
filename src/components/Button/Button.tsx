@@ -1,5 +1,5 @@
 import { ButtonProps } from "./Button.props"
-import styles from "./style.module.css"
+import styles from "./style.module.scss"
 
 
 export const Button = ({className, children, ...props}: ButtonProps): JSX.Element => {

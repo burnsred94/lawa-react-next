@@ -1,6 +1,5 @@
-/// h1 150px h2 48px h3 30px h4 20px
 import { HeadlinesProps } from './Headlines.props'
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export const Headlines = ({ tag, children}: HeadlinesProps): JSX.Element => {
      

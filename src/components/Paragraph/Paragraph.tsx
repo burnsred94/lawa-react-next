@@ -1,5 +1,5 @@
 import { ParagraphProps } from "./Paragraph.props";
-import styles from "./style.module.css";
+import styles from "./style.module.scss";
 
 
 export const Paragraph = ({type, children}: ParagraphProps): JSX.Element => {

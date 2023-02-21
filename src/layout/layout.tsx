@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 import { Footer, Header } from "./index"
 import { LayoutProps } from "./Layout.props"
-import styles from "./style.module.css"
+import styles from "./style.module.scss"
 
 
 

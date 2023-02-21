@@ -1,12 +1,12 @@
 import { HeaderProps } from "./Header.props"
 import Image from "next/image"
-import styles from "./style.module.css"
+import styles from "./style.module.scss"
 
 
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
     return (
         <header className={styles.header}>
-            <div className={styles.wrapper}>
+            <div className={styles.headerWrapper}>
                 <div className={styles.logo}>
                     <Image
                         priority
@@ -16,7 +16,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                         alt="Logo"
                     />
                 </div>
-                <div className={styles.contacts}>
+                <div className={styles.headerContacts}>
                     <Image
                         priority
                         src="svg/mobile.svg"
@@ -26,7 +26,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                     />
                     <a href="tel: +375 (29) 305-65-58">+375 (29) 305-65-58</a>
                 </div>
-                <div  className={styles.contacts}>
+                <div  className={styles.headerContacts}>
                     <Image
                         priority
                         src="svg/mail.svg"
@@ -36,7 +36,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                     />
                     <a href="mailto: hello@lawa.by">hello@lawa.by</a>
                 </div>
-                <div className={styles.burger}>
+                <div className={styles.headerBurger}>
                     <Image
                         priority
                         src="svg/burger.svg"

@@ -19,6 +19,9 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.1",
+    "react-phone-number-input": "^3.2.19",
+    "sass": "^1.58.3",
     "typescript": "4.9.5"
   }
 }
