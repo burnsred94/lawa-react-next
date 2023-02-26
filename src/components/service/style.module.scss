@@ -75,21 +75,12 @@
 		}
 	}
 
-    &Open {
-        margin: 25px 15px 0;
-		max-width: 230px;
-        overflow: none;
-        height: auto;
-        p {
-            -webkit-line-clamp: all;
-        }
-    }
 
 	&Link {
 		margin-top: 12px;
 		margin-left: 15px;
 
-		button {
+		a {
 			width: 118px;
 			color: var(--primary-color);
             background: none;
@@ -113,6 +104,7 @@
 		}
 
 	}
+
 	&Line {
 		display: block;
 		margin-top: 25px;
@@ -185,6 +177,74 @@
 	}
 }
 
+.specific {
+	display: grid;
+	grid-template-areas: 
+	"image"
+	"description"
+	"button";
+	background-color: var(--secondary-color);
+	padding: 26px 15px 0;
+
+	&Image {
+		display: flex;
+		align-items: center;
+		margin-bottom: 25px;
+		img {
+			grid-area: image;
+		}
+		p {
+			margin-left: 20px;
+			font-size: 18px;
+			width: 100px;
+			grid-area: title;
+		}
+	}
+	
+	&Description {
+		width: 240px;
+		grid-area: description;
+	}
+
+	&Link {
+		display: flex;
+		align-items: center;
+		color: var(--primary-color);
+		grid-area: button;
+		margin-top: 15px;
+		padding-bottom: 25px;
+		a {
+			display: inline-flex;
+			align-items: center;
+		}
+	}
+
+}
+
+.arsenal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	img {
+		margin-top: 55px;
+		margin-bottom: 20px;
+	}
+
+	p {
+		margin-bottom: 8px;
+		font-size: 18px;
+	}
+
+	p:last-child {
+		font-size: 16px;
+		max-width: 240px;
+		font-weight: 400;
+		margin-bottom: 20px;
+	}
+}
+
+
 @media screen and (max-width: 768px) {
 	.partners {
 		display: flex;
@@ -203,3 +263,5 @@
         }
 	}
 }
+
+

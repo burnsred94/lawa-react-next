@@ -17,12 +17,12 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
     switch (type) {
         case 'card':
             return (
-            <Link href={link ? link : '#'}>
-                <div className={styles.service}>
+                <Link href={link ? link : '#'}>
+                    <div className={styles.service}>
                         <div className={styles.serviceArrow}>
                             <Image
                                 priority
-                                src="arrow45deg.svg"
+                                src="/arrow45deg.svg"
                                 width={25}
                                 height={25}
                                 alt="arrow"
@@ -59,14 +59,14 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
                         <Paragraph type='normal-text'>{children}</Paragraph>
                     </div>
                     <div className={styles.partnersLink}>
-                        <button  onClick={()=> setActiveText(true)}>Подробнее
+                        <Link href={link ? link : '#'} onClick={() => setActiveText(true)}>Подробнее
                             <Image
-                                src='arrowright.svg'
+                                src='/arrowright.svg'
                                 width={24}
                                 height={24}
                                 alt='arrow right'
                             />
-                        </button>
+                        </Link>
                     </div>
                     <span className={styles.partnersLine}></span>
                 </div>
@@ -79,7 +79,7 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
                         Читать все
                         <Image
                             priority
-                            src='arrowdown.svg'
+                            src='/arrowdown.svg'
                             width={30}
                             height={30}
                             alt="arrow"
@@ -100,6 +100,37 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
                     </div>
                 </div>
             )
+        case 'specific-card':
+            return (
+                <div className={styles.specific}>
+                    <div className={styles.specificImage}>
+                        <Image priority src={img} width={56} height={56} alt='image specific' />
+                        <Paragraph type='normal-text'>{text}</Paragraph>
+                    </div>
+                    <div className={styles.specificDescription}>
+                        <Paragraph type='sub-title-text-dull'>{children}</Paragraph>
+                    </div>
+                    <div className={styles.specificLink}>
+                        <Link href={link ? link : '#'} onClick={() => setActiveText(true)}>Подробнее
+                            <Image
+                                src='/svg/left_tang.svg'
+                                width={24}
+                                height={24}
+                                alt='arrow right'
+                            />
+                        </Link>
+                    </div>
+                </div>
+            )
+        case 'arsenal-card':
+            return (
+                <div className={styles.arsenal}>
+                    <Image priority src={img} width={48} height={48} alt='arsenal icon'/>
+                    <Paragraph type='normal-text'>{children}</Paragraph>
+                    <Paragraph type='sub-title-text-normal'>{text}</Paragraph>
+                </div>
+            )
+
         default:
             return <>None type</>
     }

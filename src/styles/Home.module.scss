@@ -91,8 +91,6 @@
 	}
 }
 
-/* Service Block */
-
 .service {
 	width: 100%;
 	margin: 0 auto;
@@ -322,42 +320,42 @@
 		}
 	}
 
-  &ButtonLeft{
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 100px;
-    margin-left: 10px;
-    background: none;
-    border: none;
-    opacity: 0.5;
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
+	&ButtonLeft {
+		position: absolute;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 100px;
+		margin-left: 10px;
+		background: none;
+		border: none;
+		opacity: 0.5;
+		transition: all 250ms ease-in-out;
+		cursor: pointer;
 
-    &:hover{
-      transition: all 250ms ease-in-out;
-      opacity: 1;
-    }
-  }
+		&:hover {
+			transition: all 250ms ease-in-out;
+			opacity: 1;
+		}
+	}
 
-  &ButtonRight{
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 100px;
-    right: 0;
-    margin-right: 10px;
-    background: none;
-    border: none;
-    opacity: 0.5;
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
+	&ButtonRight {
+		position: absolute;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 100px;
+		right: 0;
+		margin-right: 10px;
+		background: none;
+		border: none;
+		opacity: 0.5;
+		transition: all 250ms ease-in-out;
+		cursor: pointer;
 
-    &:hover{
-      transition: all 250ms ease-in-out;
-      opacity: 1;
-    }
-  }
+		&:hover {
+			transition: all 250ms ease-in-out;
+			opacity: 1;
+		}
+	}
 
 	&Image {
 		display: grid;
@@ -371,230 +369,317 @@
 }
 
 .form {
-  margin: 0 auto;
-  max-width: 1200px;
-  margin-top: 150px;
+	margin: 0 auto;
+	max-width: 1200px;
+	margin-top: 150px;
 
-  &Wrapper {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    grid-template-areas: "image form";
+	&Wrapper {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		justify-content: space-between;
+		align-items: center;
+		grid-template-areas: "image form";
 
-    &Image {
-      grid-area: image;
-    }
-    
-    &Fields {
-      max-width: 450px;
-      grid-area: form;
-      p {
-        margin-top: 15px;
-        margin-bottom: 30px;
-        max-width: 400px;
-      }
-    }
-  }
+		&Image {
+			grid-area: image;
+		}
+
+		&Fields {
+			max-width: 450px;
+			grid-area: form;
+			p {
+				margin-top: 15px;
+				margin-bottom: 30px;
+				max-width: 400px;
+			}
+		}
+	}
 }
 
 .questions {
-  background-image: url('/images/frame.png');
-  margin-top: 120px;
-  max-width: 100%;
-  height: 300px;
+	background-image: url("/images/frame.png");
+	margin-top: 120px;
+	max-width: 100%;
+	height: 300px;
 
-  &Wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+	&Wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
 
-    button {
-      margin-top: 53px;
-    }
-  }
+		button {
+			margin-top: 53px;
+		}
+	}
 }
 
+@media screen and (max-width: 1200px) {
+	.header {
+		padding: 0 15px;
+		width: 100%;
 
+		&Text {
+			margin-top: 50px;
+			h1 {
+				font-size: 120px;
+			}
 
+			p {
+				font-size: 16px;
+			}
+			button {
+				font-size: 12px;
+			}
+		}
+
+		&Images {
+			img {
+				width: 350px;
+				height: 350px;
+			}
+		}
+	}
+
+	.service {
+		padding: 0 15px;
+		&Wrapper {
+			width: 100%;
+			max-width: none;
+		}
+		&Items {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 15px;
+		}
+		&Text {
+			margin-top: 50px;
+		}
+	}
+
+	.approach {
+		margin-top: 150px;
+		grid-template-columns: 2fr;
+
+		&Images {
+			display: none;
+		}
+
+		&List {
+			margin-top: 0;
+		}
+	}
+
+	.cases {
+		margin-top: 100px;
+		padding: 0 15px;
+
+		&Cards {
+			grid-template-columns: 1fr 1fr;
+			justify-content: center;
+			gap: 50px;
+		}
+		&Defualt {
+			display: grid;
+			justify-content: center;
+		}
+	}
+
+	.trust {
+		&Blocks {
+			display: flex;
+			position: absolute;
+			justify-content: space-between;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		&ButtonLeft {
+			display: none;
+		}
+
+		&ButtonRight {
+			display: none;
+		}
+
+		&Image {
+			display: grid;
+			align-items: center;
+			justify-items: center;
+			padding: 0 50px;
+			width: 310px;
+			height: 207px;
+			border-right: 1px #2b2b2b solid;
+			border-left: 1px #2b2b2b solid;
+		}
+	}
+
+	.form {
+		margin-top: 300px;
+		&Wrapper {
+			margin: 0 auto;
+			grid-template-areas: "form";
+			grid-template-columns: 1fr;
+			align-items: center;
+			justify-items: center;
+			&Image {
+				display: none;
+			}
+		}
+	}
+}
 
 @media screen and (max-width: 768px) {
-	.headerBlock {
+	.header {
 		background: none;
-	}
-	.line::before {
-		display: none;
-	}
-	.lineTwo::before {
-		display: none;
-	}
-	.wrapperHeaderBlock {
-		max-width: auto;
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			"text"
-			"image"
-			"social";
-	}
-	.headerBlockText {
-		margin-top: 0;
+
+		&Wrapper {
+			max-width: auto;
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"text"
+				"image"
+				"social";
+		}
+		&Text {
+			margin-top: 0;
+
+			h1 {
+				font-size: 60px;
+				line-height: 72px;
+			}
+
+			p {
+				margin: 0;
+				margin-bottom: 25px;
+			}
+		}
+
+		&Images {
+			justify-content: flex-end;
+
+			img {
+				margin-top: -50px;
+				width: 200px;
+				height: 200px;
+			}
+		}
+
+		&Social {
+			max-width: auto;
+
+			&Wrapper {
+				width: 100%;
+				justify-content: space-between;
+			}
+		}
 	}
 
-	.headerBlockText > h1 {
-		font-size: 60px;
-		line-height: 72px;
-	}
-	.headerBlockText > p {
-		margin: 0;
-		margin-bottom: 25px;
-	}
-
-	.headerBlockImages {
-		justify-content: flex-end;
-	}
-
-	.headerBlockImages > img {
-		margin-top: -50px;
-		width: 200px;
-		height: 200px;
-	}
-
-	.socialBlock {
-		max-width: auto;
-	}
-
-	.socialBlockWrapper {
-		width: 100%;
-		justify-content: space-between;
-	}
-
-	.serviceBlock {
+	.service {
 		background: none;
+
+		&Title {
+			margin-top: 100px;
+			padding-left: 0;
+
+			h2 {
+				font-size: 28px;
+				padding-left: 0;
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+
+		&Items {
+			grid-template-columns: 1fr;
+		}
+
+		&Button {
+			display: flex;
+			justify-content: center;
+			margin-top: 25px;
+		}
 	}
 
-	.serviceTitle {
+	.cases {
 		margin-top: 100px;
-		padding-left: 0;
+		&Title {
+			flex-direction: column;
+			align-items: flex-start;
+			padding-left: 0;
+			h2 {
+				font-size: 28px;
+				margin-bottom: 16px;
+				padding-left: 0;
+			}
+
+			h2::before {
+				display: none;
+			}
+		}
+
+		&Cards {
+			grid-template-columns: 1fr;
+			justify-content: center;
+			align-items: center;
+		}
+		&NonActive {
+			z-index: 2;
+			display: none;
+		}
+		&Active > div {
+			z-index: 2;
+			display: block;
+		}
+		&Slider {
+			display: flex;
+			margin-top: 30px;
+			justify-content: center;
+			align-items: center;
+			column-gap: 5px;
+		}
+		&ButtonSlider {
+			border: none;
+			width: 25px;
+			height: 3px;
+		}
+		&ButtonSliderActive {
+			background-color: var(--primary-color);
+		}
 	}
 
-	.serviceTitle > h2 {
-		font-size: 28px;
-		padding-left: 0;
+	.review {
+		&Cards {
+			grid-template-columns: 1fr;
+		}
 	}
 
-	.serviceTitle::before {
+	.trust {
 		display: none;
 	}
 
-	.services {
-		grid-template-columns: 1fr;
+	.form {
+		&Wrapper {
+			grid-template-columns: 1fr;
+			&Image {
+				display: none;
+			}
+		}
 	}
+}
 
-	.servicesButton {
-		display: flex;
-		justify-content: center;
-		margin-top: 25px;
-	}
+.sloganWrapper {
+	margin-top: 100px;
+	width: 100%;
+}
 
-	.approachBlock {
-		grid-template-columns: 1fr;
-	}
-
-	.approachListBlock {
-		margin-left: 0;
-		margin-top: 0;
-	}
-
-	.approachListBlock > h2 {
-		font-size: 28px;
-		margin-left: 0;
-		padding-bottom: 0;
-		margin-bottom: 42px;
-	}
-
-	.approachListBlock > h2::before {
-		display: none;
-	}
-
-	.approachBlockImages > img {
-		width: 300px;
-		height: 288px;
-	}
-
-	.approachList > ul {
-		margin-left: 0;
-	}
-
-	.casesBlock {
-		margin-top: 100px;
-	}
-
-	.casesTitle {
-		flex-direction: column;
-		align-items: flex-start;
-		padding-left: 0;
-	}
-
-	.casesTitle > h2 {
-		font-size: 28px;
-		margin-bottom: 16px;
-		padding-left: 0;
-	}
-
-	.casesTitle > h2::before {
-		display: none;
-	}
-
-	.casesCards {
-		grid-template-columns: 1fr;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.casesNonActive {
-		z-index: 2;
-		display: none;
-	}
-
-	.casesActive > div {
-		z-index: 2;
-		display: block;
-	}
-
-	.casesSliderBlock {
-		display: flex;
-		margin-top: 30px;
-		justify-content: center;
-		align-items: center;
-		column-gap: 5px;
-	}
-
-	.buttonSliderBlock {
-		border: none;
-		width: 25px;
-		height: 3px;
-	}
-
-	.buttonSliderBlockActive {
-		background-color: var(--primary-color);
-	}
-
-	.sloganWrapper {
-		margin-top: 100px;
-		width: 100%;
-	}
-
-	.sloganWrapper > h4 {
-		font-size: 18px;
-		margin: 40px 15px;
-		text-align: start;
-		width: 100%;
-	}
-
-	.reviewCards {
-		grid-template-columns: 1fr;
-	}
+.sloganWrapper > h4 {
+	font-size: 18px;
+	margin: 40px 15px;
+	text-align: start;
+	width: 100%;
 }

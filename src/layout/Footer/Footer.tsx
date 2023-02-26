@@ -14,11 +14,11 @@ export const Footer = ({ ...props }: FooterProps): JSX.Element => {
         <footer className={styles.footer}>
             <div className={styles.footerWrapper}>
                 <div className={styles.footerWrapperLogo}>
-                    <Image src='svg/logo.svg' width={130} height={30} alt='logo' />
+                    <Image src='/svg/logo.svg' width={130} height={30} alt='logo' />
                 </div>
                 <ul className={styles.footerWrapperNavigation}>
                     <li className={styles.footerWrapperNavigationItem}>
-                        <Link href='#'>Услуги</Link>
+                        <Link href='/services'>Услуги</Link>
                     </li>
                     <li className={styles.footerWrapperNavigationItem}>
                         <Link href='#'>Кейсы</Link>

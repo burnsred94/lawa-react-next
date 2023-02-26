@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 import { social, service, approach, cases, reviews, partners } from '../mock/mock.data'
 import { Service } from '@/components/Service/Service'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Form } from '@/components/Form/Form'
 
 
@@ -16,7 +16,7 @@ function Home() {
   const [active, setActive] = useState(0)
   const [activeReview, setActiveReview] = useState(0)
 
-
+ 
   return (
     <>
       <Head>
@@ -61,7 +61,7 @@ function Home() {
             </div>
             <div className={styles.serviceItems}>
               {service.map((item, key) => (
-                <Service type='card' key={key} img={item.img} link={item.link}>{item.text}</Service>
+                <Service type='card' key={key} img={item.img} link={`services/${item.link}`}>{item.text}</Service>
               ))}
             </div>
             <div className={styles.serviceButton}>
@@ -105,7 +105,7 @@ function Home() {
           </div>
           <div className={styles.casesCards}>
             {cases.map((item, key) => (
-              <div key={key} className={cn(styles.defualtCases, {
+              <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === active,
                 [styles.casesNonActive]: key !== active
               })}>
@@ -116,8 +116,8 @@ function Home() {
           <div className={styles.casesSlider}>
             {cases.slice(0, 3).map((item, key) => (
               <button
-                className={cn(styles.buttonSliderBlock, {
-                  [styles.buttonSliderBlockActive]: key === active
+                className={cn(styles.casesButtonSlider, {
+                  [styles.casesButtonSliderActive]: key === active
                 })}
                 key={key}
                 onClick={() => setActive(key)}
@@ -138,7 +138,7 @@ function Home() {
           </div>
           <div className={styles.reviewCards}>
             {reviews.map((item, key) => (
-              <div key={key} className={cn(styles.defualtCases, {
+              <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === activeReview,
                 [styles.casesNonActive]: key !== activeReview
               })}>

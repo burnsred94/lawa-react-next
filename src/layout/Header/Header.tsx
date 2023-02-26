@@ -10,7 +10,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                 <div className={styles.logo}>
                     <Image
                         priority
-                        src="svg/logo.svg"
+                        src="/svg/logo.svg"
                         width={130}
                         height={30}
                         alt="Logo"
@@ -19,7 +19,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                 <div className={styles.headerContacts}>
                     <Image
                         priority
-                        src="svg/mobile.svg"
+                        src="/svg/mobile.svg"
                         width={24}
                         height={24}
                         alt="Mobile"
@@ -29,7 +29,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                 <div  className={styles.headerContacts}>
                     <Image
                         priority
-                        src="svg/mail.svg"
+                        src="/svg/mail.svg"
                         width={24}
                         height={24}
                         alt="Mail"
@@ -39,7 +39,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                 <div className={styles.headerBurger}>
                     <Image
                         priority
-                        src="svg/burger.svg"
+                        src="/svg/burger.svg"
                         width={38}
                         height={24}
                         alt="Mail"
