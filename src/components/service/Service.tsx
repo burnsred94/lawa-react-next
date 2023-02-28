@@ -130,6 +130,18 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
                     <Paragraph type='sub-title-text-normal'>{text}</Paragraph>
                 </div>
             )
+        case 'executives-card': 
+            return (
+                <div className={styles.executives}>
+                    <div className={styles.executivesImage}>
+                        <Link href={img}/>
+                    </div>
+                    <div className={styles.executivesText}>
+                        <span>{children}</span>
+                        <span>{text}</span>
+                    </div>
+                </div>
+            )
 
         default:
             return <>None type</>

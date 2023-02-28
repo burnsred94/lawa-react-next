@@ -1,4 +1,4 @@
-import { DataPage } from "./mock.interfaces"
+import { DataPage, Menu } from "./mock.interfaces"
 
 export const social = [
     {
@@ -2156,3 +2156,96 @@ export const slugPageData = [
     }
 
 ]
+
+export const menu: Menu[] = [
+    {
+        name: "Главная",
+        link: "/"
+    },
+    {
+        name: "Услуги",
+        link: "services",
+        props: [
+            {
+                name: "Маркетинговые исследования",
+                link: "marketing_research"
+            },
+            {
+                name: "Бренд-Стартегии",
+                link: "brand_strategy"
+            },
+            {
+                name: "Невербальная айдентика",
+                link: "non_verbal_adentics"
+            },
+            {
+                name: 'Вербальная айдентика',
+                link: 'verbal_adentics',
+            },
+            {
+                name: 'Коммуникационная стратегия',
+                link: 'comunications_strategy',
+            },
+            {
+                name: 'Креативная Концепция',
+                link: 'creative-concept',
+            },
+            {
+                name: 'Продакшн РМ',
+                link: 'rm-production',
+            },
+            {
+                name: 'Рекламное Сопровождение',
+                link: 'supporting-the-rc',
+            },
+        ]
+    },
+    {
+        name: "Кейсы",
+        link: "/cases"
+    },
+    {
+        name: "О нас",
+        link: "/about"
+    },
+    {
+        name: "Блог",
+        link: "/blog"
+    },
+    {
+        name: "Отзывы",
+        link: "/reviews"
+    },
+    {
+        name: "Контакты",
+        link: "/contacts"
+    }
+]
+
+export const pageAbout = {
+    title: 'что получает клиент, работая с нами',
+    description: `Помогаем понять, как работает ваш бизнес сейчас, какие подводные камни вас ждут при создании нового бизнеса, 
+        что сделать, чтобы занять лидирующие позиции на рынке и как отстроиться от конкурентов.
+        Мы собираем команду под ваши задачи как пазл. Это специалисты с опытом в аналогичных сферах. Они знают,
+        чего хотят ваши клиенты, что предлагают ваши конкуренты и как предложить больше. В результате исследований 
+        вы получите результаты с анализом и рекомендациями, которые помогут занять лидирующие позиции на рынке.`,
+    missionText:`Помогаем понять, как работает ваш бизнес сейчас, какие подводные камни вас ждут при создании нового бизнеса, 
+    что сделать, чтобы занять лидирующие позиции на рынке и как отстроиться от конкурентов.`,
+    executives: [
+        {
+            name: 'Lorem Ipsum is simply',
+            image: '#',
+            post: 'Lorem Ipsum is simply'
+        },
+        {
+            name: 'Lorem Ipsum is simply',
+            image: '#',
+            post: 'Lorem Ipsum is simply'
+        },
+        {
+            name: 'Lorem Ipsum is simply',
+            image: '#',
+            post: 'Lorem Ipsum is simply'
+        }
+    ]
+}

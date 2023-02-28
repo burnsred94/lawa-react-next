@@ -1,9 +1,14 @@
 import { HeaderProps } from "./Header.props"
 import Image from "next/image"
 import styles from "./style.module.scss"
+import { useState } from "react"
+import cn from "classnames";
+import { MenuComponent } from "@/components/Menu/Menu";
 
 
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
+    const [activeMenu, setActiveMenu] = useState(false)
+
     return (
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
@@ -26,7 +31,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                     />
                     <a href="tel: +375 (29) 305-65-58">+375 (29) 305-65-58</a>
                 </div>
-                <div  className={styles.headerContacts}>
+                <div className={styles.headerContacts}>
                     <Image
                         priority
                         src="/svg/mail.svg"
@@ -37,13 +42,18 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
                     <a href="mailto: hello@lawa.by">hello@lawa.by</a>
                 </div>
                 <div className={styles.headerBurger}>
-                    <Image
-                        priority
-                        src="/svg/burger.svg"
-                        width={38}
-                        height={24}
-                        alt="Mail"
-                    />
+                    <button className={cn(styles.headerBurgerButton, {
+                        [styles.headerBurgerActive]: activeMenu
+                    })} onClick={() => (activeMenu ? setActiveMenu(false) : setActiveMenu(true))}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div className={cn(styles.menu, {
+                    [styles.menuActive]: activeMenu
+                })}>
+                    <MenuComponent />
                 </div>
             </div>
         </header>

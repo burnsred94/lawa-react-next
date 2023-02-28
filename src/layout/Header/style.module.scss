@@ -42,6 +42,86 @@
 	&Burger {
 		display: flex;
 		justify-content: flex-end;
+
+		&Button {
+			background: none;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			width: 38px;
+			height: 24px;
+			border: none;
+			cursor: pointer;
+
+			span {
+				transition: 250ms all ease-in-out;
+			}
+			
+			span:nth-child(1) {
+				display: block;
+				position: absolute;
+				top: 30px;
+				height: 2.5px;
+				width: 38px;
+				background-color: var(--primary-color);				
+			}
+
+			span:nth-child(2) {
+				display: block;
+				position: absolute;
+				top: 39px;
+				width: 32px;
+				background-color: var(--primary-color);
+				height: 2.5px;
+			}
+			
+			span:nth-child(3) {
+				position: absolute;
+				display: block;
+				top: 48px;
+				height: 2.5px;
+				width: 28px;
+				background-color: var(--primary-color);
+				
+			}
+
+		}
+
+		&Button:hover > span {
+			transition: 250ms all ease-in-out;
+			width: 38px;
+		}
+
+		&Active {
+			span:nth-child(2) {
+				display: none;
+			}
+			span:nth-child(1) {
+				width: 38px;
+				top:40px;
+				transform: rotate(135deg);
+			}
+			span:nth-child(3) {
+				width: 38px;
+				top:40px;
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
+.menu {
+	margin: 0;
+	position: absolute;
+	right: -1000px;
+	top: 80px;
+	background-color: #1B191A;
+	width: 400px;
+	transition: 500ms all ease-in-out;
+	
+	&Active {
+		transition: 500ms all ease-in-out;
+		right: -160px;
 	}
 }
 

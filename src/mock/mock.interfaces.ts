@@ -15,3 +15,13 @@ export interface DataPage {
         last_list: string[],
     }
 }
+
+export interface MenuPropsItems {
+    name: string,
+    link: string,
+}
+export interface Menu {
+    name: string,
+    link: string,
+    props?: MenuPropsItems[]
+}

@@ -244,6 +244,38 @@
 	}
 }
 
+.executives {
+	
+	border-bottom: 2px solid var(--primary-color);
+
+	&Image {
+		max-width: 100%;
+		height: 370px;
+		background-color: #242424;
+	} 
+
+	&Text {
+		margin: 25px 0 15px;
+		display: flex;
+		flex-direction: column;
+
+		span {
+			margin-bottom: 10px;
+		}
+		
+		span {
+			color: var(--default-color-text);
+			font-weight: 400;
+		}
+		span:nth-child(1) {
+			color: var(--default-color-text);
+			font-weight: bold;
+		}
+		
+
+	}
+}
+
 
 @media screen and (max-width: 768px) {
 	.partners {
