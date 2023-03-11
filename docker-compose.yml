@@ -1,26 +1,65 @@
 version: '3.1'
+
 services:
-  mysql:
-    container_name: mysql
+  service-api:
+    container_name: $INFRA_API_APP
+    image: ${INFRA_API_IMAGE}:${INFRA_API_IMAGE_TAG:-latest}
+    build: strapi-backend
+    restart: unless-stopped
+    env_file:
+      - $INFRA_API_PATH/.env
+      - $ENV_SELF_PATH
+    environment:
+      PORT: $INFRA_API_PORT
+      HOST: 0.0.0.0
+      APP_URL: ${INFRA_API_URL}
+      APP_ADMIN_URL: ${INFRA_API_ADMIN_URL}
+      NODE_ENV: development
+      WHOAMI_PORT_NUMBER: ${INFRA_API_PORT}
+      DATABASE_HOST: ${INFRA_DB_APP}
+      DATABASE_PORT: ${INFRA_DB_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '3308:3308'
-    image: mysql:5.7
+      - ${INFRA_API_PORT}
+    depends_on:
+      - service-db
+
+  service-db:
+    container_name: $INFRA_DB_APP
+    image: postgres:15.1-alpine
     restart: always
     environment:
-      MYSQL_DATABASE: lawa
-      MYSQL_ROOT_PASSWORD: lawa
-    volumes:
-      - mysql:/var/lib/mysql
-  frontend:
-    container_name: lawa-app
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '3000:3000'
-    build:
-      dockerfile: Dockerfile
+      - ${INFRA_DB_PORT}
+    command: "-p ${INFRA_DB_PORT}"
     volumes:
-      - ./lawa-app:/src
-      - /lawa-app/node_modules
-      - /lawa-app/.next
+      - $INFRA_DB_STORE:/var/lib/postgresql/data
+  
+  service-adminer:
+    container_name: $INFRA_DB_ADMIN
+    image: adminer:latest
+    ports:
+      - ${INFRA_DB_ADMIN_PORT}:8080
 
-volumes: #define our mysql volume used above
-  mysql:
+  # service-web:
+  #   container_name: $INFRA_WEB_APP
+  #   image: ${INFRA_WEB_IMAGE}:${INFRA_WEB_IMAGE_TAG:-latest}
+  #   build: /lawa-react-next
+  #   restart: unless-stopped
+  #   environment:
+  #     PORT: ${INFRA_WEB_PORT}
+  #     HOST: 0.0.0.0
+  #     NODE_ENV: development
+  #     WHOAMI_PORT_NUMBER: ${INFRA_WEB_PORT}
+  #     APP_API_URL: ${INFRA_API_URL}
+  #   ports:
+  #     - ${INFRA_WEB_PORT}
+  #   depends_on:
+  #     - service-api
+
+      

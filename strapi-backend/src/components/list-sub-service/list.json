@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_list_sub_service_lists",
+  "info": {
+    "displayName": "List"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title_header": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image_director": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title_director": {
+      "type": "string"
+    },
+    "description_director": {
+      "type": "json"
+    },
+    "title_executives": {
+      "type": "string"
+    },
+    "executives": {
+      "type": "component",
+      "repeatable": true,
+      "component": "other-blocks.executives"
+    },
+    "title_contacts": {
+      "type": "string"
+    },
+    "data_contacts": {
+      "type": "json"
+    },
+    "questions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_other_blocks_executives",
+  "info": {
+    "displayName": "Executives"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "post": {
+      "type": "string"
+    }
+  }
+}

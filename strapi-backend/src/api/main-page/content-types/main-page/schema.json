@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_pages",
+  "info": {
+    "singularName": "main-page",
+    "pluralName": "main-pages",
+    "displayName": "Main Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "time_work": {
+      "type": "string"
+    },
+    "title_services": {
+      "type": "string"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "title_approach": {
+      "type": "string"
+    },
+    "approach_list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-approach.lists"
+    },
+    "slogan": {
+      "type": "text"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    },
+    "title_trust": {
+      "type": "string"
+    },
+    "trust_images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "title_form": {
+      "type": "text"
+    },
+    "description_form": {
+      "type": "text"
+    },
+    "title_qustions": {
+      "type": "text"
+    },
+    "link_question": {
+      "type": "string"
+    }
+  }
+}

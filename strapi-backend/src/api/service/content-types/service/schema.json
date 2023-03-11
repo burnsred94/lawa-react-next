@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "title_service": {
+      "type": "string"
+    },
+    "sub_services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-service.sub-service",
+      "mappedBy": "service"
+    },
+    "title_sphere": {
+      "type": "string"
+    },
+    "list_sphere": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-sphere.list"
+    },
+    "title_result": {
+      "type": "text"
+    },
+    "images_result": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "list_result": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-result.list"
+    },
+    "table_we_and_you": {
+      "type": "component",
+      "repeatable": false,
+      "component": "we-and-you.table"
+    }
+  }
+}

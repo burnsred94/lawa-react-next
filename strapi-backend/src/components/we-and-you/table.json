@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_we_and_you_tables",
+  "info": {
+    "displayName": "Table"
+  },
+  "options": {},
+  "attributes": {
+    "We": {
+      "type": "json"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "You": {
+      "type": "json"
+    }
+  }
+}
