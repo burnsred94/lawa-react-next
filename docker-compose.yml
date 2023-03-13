@@ -4,7 +4,9 @@ services:
   service-api:
     container_name: $INFRA_API_APP
     image: ${INFRA_API_IMAGE}:${INFRA_API_IMAGE_TAG:-latest}
-    build: strapi-backend
+    build: 
+      context: ./strapi-backend
+      dockerfile: Dockerfile
     restart: unless-stopped
     env_file:
       - $INFRA_API_PATH/.env
@@ -49,7 +51,9 @@ services:
   service-web:
     container_name: $INFRA_WEB_APP
     image: ${INFRA_WEB_IMAGE}:${INFRA_WEB_IMAGE_TAG:-latest}
-    build: /lawa-react-next
+    build: 
+      context: ./lawa-react-next
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       PORT: ${INFRA_WEB_PORT}
