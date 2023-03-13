@@ -15,46 +15,65 @@
     "title": {
       "type": "string"
     },
-    "title_service": {
-      "type": "string"
-    },
     "sub_services": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sub-service.sub-service",
       "mappedBy": "service"
     },
-    "title_sphere": {
+    "table_we_and_you": {
+      "type": "component",
+      "repeatable": false,
+      "component": "we-and-you.table"
+    },
+    "title_service": {
       "type": "string"
     },
-    "list_sphere": {
-      "type": "component",
-      "repeatable": true,
-      "component": "list-sphere.list"
-    },
-    "title_result": {
+    "description": {
       "type": "text"
     },
-    "images_result": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
+    "link_service": {
+      "type": "string"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    },
+    "title_cases": {
+      "type": "string"
+    },
+    "cases_link": {
+      "type": "string"
+    },
+    "title_review": {
+      "type": "string"
+    },
+    "link_review": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "question": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "preview_img": {
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
-    },
-    "list_result": {
-      "type": "component",
-      "repeatable": true,
-      "component": "list-result.list"
-    },
-    "table_we_and_you": {
-      "type": "component",
-      "repeatable": false,
-      "component": "we-and-you.table"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

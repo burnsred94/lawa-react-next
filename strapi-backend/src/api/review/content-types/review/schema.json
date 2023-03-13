@@ -34,12 +34,6 @@
     },
     "link": {
       "type": "string"
-    },
-    "sub_service": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::sub-service.sub-service",
-      "inversedBy": "reviews"
     }
   }
 }
