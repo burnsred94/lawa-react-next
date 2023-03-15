@@ -13,11 +13,9 @@ ENV NODE_ENV=dev
 
 WORKDIR /app
 
-# copy only package and generate node_modules
 COPY ./package.json ./
 
-RUN npm i --force
-
+RUN npm i 
 
 FROM node-base AS dev-runtime
 

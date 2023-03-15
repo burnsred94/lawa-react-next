@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { loaderImage } from '@/utils/image-loader/image-loader.utlis'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +15,6 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
 
   const [activeText, setActiveText] = useState(false)
 
-  console.log(activeText)
 
   switch (type) {
   case 'card':
@@ -33,7 +33,8 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
           <div className={styles.serviceText}>
             <Image
               priority
-              src={img}
+              loader={() => loaderImage(img)}
+              src={process.env.NEXT_PUBLIC_API_URL + img}
               width={48}
               height={48}
               alt="arrow"
@@ -48,8 +49,11 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
       <div className={styles.partners}>
         <div className={styles.partnersCard}>
           <div className={styles.partnersImage}>
-            <img
-              src={img}
+            <Image
+              loader={() => loaderImage(img)}
+              src={process.env.NEXT_PUBLIC_API_URL + img}
+              width={220}
+              height={85}
               alt="arrow"
             />
           </div>
@@ -78,7 +82,7 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
       <div className={styles.reviewBlock}>
         <Paragraph type='normal-text'>{text}</Paragraph>
         <button className={styles.reviewButton}>
-                        Читать все
+            Читать все
           <Image
             priority
             src='/arrowdown.svg'
@@ -90,7 +94,8 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
         <div className={styles.reviewCredential}>
           <Image
             priority
-            src={img}
+            loader={() => loaderImage(img)}
+            src={process.env.NEXT_PUBLIC_API_URL + img}
             width={90}
             height={90}
             alt="client"
@@ -106,7 +111,7 @@ export const Service = ({ type, children, link, img, text, client_name, title }:
     return (
       <div className={styles.specific}>
         <div className={styles.specificImage}>
-          <Image priority src={img} width={56} height={56} alt='image specific' />
+          <Image priority loader={()=>loaderImage(img)} src={process.env.NEXT_PUBLIC_DOMAIN + img} width={56} height={56} alt='image specific' />
           <Paragraph type='normal-text'>{text}</Paragraph>
         </div>
         <div className={styles.specificDescription}>

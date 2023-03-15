@@ -1,1 +1,2 @@
 export const URL_MAIN_PAGE = '/api/main-page?populate[approach_list][populate][img]=*&populate[trust_images]=*&populate[header_image]=*&populate[approach_image]=*'
+export const URL_SERVICE_PAGE = '/api/service/top/'

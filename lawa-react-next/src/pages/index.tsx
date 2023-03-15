@@ -12,18 +12,32 @@ import axios from 'axios'
 import { MainPage } from '@/interfaces/main-page.interface'
 import { ImageObject } from '@/interfaces/image.interface'
 import { loaderImage } from '@/utils/image-loader/image-loader.utlis'
-import { mutationStructureMainPage } from '@/lib/dataStructures'
-import { URL_MAIN_PAGE } from '@/constants/constants'
+import { URL_MAIN_PAGE, URL_SERVICE_PAGE } from '@/constants/constants'
+import { useRouter } from 'next/router'
 
 
 
-function Home({ page }: HomeProps) {
+function Home() {
+  const route = useRouter()
   const [active, setActive] = useState(0)
   const [activeReview, setActiveReview] = useState(0)
+  const [data, setData] = useState<MainPage>()
 
-  console.log(page)
+
+  useEffect (()=> {
+    async function fetchData () {
+      try {
+        const { data } = await axios.get<MainPage>(process.env.NEXT_PUBLIC_DOMAIN + URL_SERVICE_PAGE);
+        if(data){
+          setData(data)
+        }
+      }catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
+  },[route.query])
  
-  const data = mutationStructureMainPage(page)
 
   return (
     <>
@@ -46,9 +60,10 @@ function Home({ page }: HomeProps) {
               <Button>Связаться с нами</Button>
             </div>
             <div className={styles.headerImages}>
-
-              <Image loader={
-                () => loaderImage(data.header_image)} src={process.env.NEXT_PUBLIC_DOMAIN + data.header_image} alt="lawa" width={450} height={450} />
+              {
+               data && <Image loader={
+                  () => loaderImage(data.header_img.url)} src={process.env.NEXT_PUBLIC_DOMAIN +  data.header_img.url} alt={data.header_img.name} width={450} height={450} />
+              }
             </div>
             <div className={styles.headerSocial}>
               <div className={styles.headerSocialWrapper}>
@@ -78,8 +93,8 @@ function Home({ page }: HomeProps) {
               </Headlines>
             </div>
             <div className={styles.serviceItems}>
-              {service.map((item, key) => (
-                <Service type='card' key={key} img={item.img} link={`services/${item.link}`}>{item.text}</Service>
+              {data && data.services.map((item, key) => (
+                <Service type='card' key={key} img={item.img.url} link={`services/${item.slug}`}>{item.title}</Service>
               ))}
             </div>
             <div className={styles.serviceButton}>
@@ -89,22 +104,22 @@ function Home({ page }: HomeProps) {
         </section>
         <section className={styles.approach}>
           <div className={styles.approachImages}>
-            <Image
-              loader={() => loaderImage(data.approach_image)}
-              src={process.env.NEXT_PUBLIC_DOMAIN + data.approach_image}
-              alt="lawa"
+            {data && <Image
+              loader={() => loaderImage(data.approach_image.url)}
+              src={process.env.NEXT_PUBLIC_DOMAIN + data.approach_image.url}
+              alt={data.approach_image.name}
               width={495}
               height={506}
-            />
+            />}
           </div>
           <div className={styles.approachList}>
-            <Headlines tag='h2'>{data.title_approach}</Headlines>
+            <Headlines tag='h2'>{data && data.title_approach}</Headlines>
             <ul className={styles.approachListItems}>
               {data && data.approach_list.map((item, key) => (
                 <li key={key} className={styles.approachListItem}>
                   <Image
-                    loader={() => loaderImage(item.img)}
-                    src={process.env.NEXT_PUBLIC_DOMAIN + item.img}
+                    loader={() => loaderImage(item.img.url)}
+                    src={process.env.NEXT_PUBLIC_DOMAIN + item.img.url}
                     width={40}
                     height={40}
                     alt={item.title}
@@ -120,21 +135,21 @@ function Home({ page }: HomeProps) {
         </section>
         <section className={styles.cases}>
           <div className={styles.casesTitle}>
-            <Headlines tag='h2'>Наши Кейсы</Headlines>
+            <Headlines tag='h2'>{data && data.title_cases}</Headlines>
             <Button>Смотреть все работы</Button>
           </div>
           <div className={styles.casesCards}>
-            {cases.map((item, key) => (
+            {data && data.case.map((item, key) => (
               <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === active,
                 [styles.casesNonActive]: key !== active
               })}>
-                <Service type='card-partners' img={item.img} link={item.link}>{item.title}</Service>
+                <Service type='card-partners' img={item.img.url} link={item.link}>{item.description}</Service>
               </div>
             ))}
           </div>
           <div className={styles.casesSlider}>
-            {cases.slice(0, 3).map((item, key) => (
+            {data && data.reviews.slice(0, 3).map((item, key) => (
               <button
                 className={cn(styles.casesButtonSlider, {
                   [styles.casesButtonSliderActive]: key === active
@@ -147,7 +162,7 @@ function Home({ page }: HomeProps) {
         </section>
         <section className={styles.slogan}>
           <div className={styles.sloganWrapper}>
-            <Headlines tag='h4'>{data.slogan}</Headlines>
+            <Headlines tag='h4'>{data && data.slogan}</Headlines>
           </div>
         </section>
         <section className={styles.cases}>
@@ -156,17 +171,17 @@ function Home({ page }: HomeProps) {
             <Button>Смотреть все Отзывы</Button>
           </div>
           <div className={styles.reviewCards}>
-            {reviews.map((item, key) => (
+            {data && data.reviews.map((item, key) => (
               <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === activeReview,
                 [styles.casesNonActive]: key !== activeReview
               })}>
-                <Service type='card-review' img={item.img} title={item.title} text={item.text} client_name={item.name_client} />
+                <Service type='card-review' img={item.logo.url} title={item.name} text={item.description} client_name={item.post} />
               </div>
             ))}
           </div>
           <div className={styles.casesSlider}>
-            {cases.slice(0, 3).map((item, key) => (
+            {data && data.reviews.slice(0, 3).map((item, key) => (
               <button
                 className={cn(styles.buttonSliderBlock, {
                   [styles.buttonSliderBlockActive]: key === active
@@ -180,7 +195,7 @@ function Home({ page }: HomeProps) {
         <section className={styles.trust}>
           <div className={styles.trustWrapper}>
             <div className={styles.casesTitle}>
-              <Headlines tag='h2'>Нам доверяют</Headlines>
+              <Headlines tag='h2'>{data && data.title_trust}</Headlines>
             </div>
           </div>
           <div className={styles.trustBlocks}>
@@ -188,13 +203,14 @@ function Home({ page }: HomeProps) {
               <Image src='svg/arrow-left.svg' alt='arrow' width={24} height={24} priority />
             </button>
             {
-              partners.map((item, key) => (
+             data &&  data.trust_images.map((item, key) => (
                 <div key={key} className={styles.trustImage}>
                   <Image
-                    src={item.url}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
+                    loader={() => loaderImage(item.url)}
+                    src={process.env.NEXT_PUBLIC_DOMAIN + item.url}
+                    alt={item.name}
+                    width={220}
+                    height={170}
                   />
                 </div>
               ))
@@ -210,8 +226,8 @@ function Home({ page }: HomeProps) {
               <Image src='/images/message.png' width={650} height={650} alt='message' />
             </div>
             <div className={styles.formWrapperFields}>
-              <Headlines tag='h3'>Думаешь, крутой продукт обязательно стоит дорого?</Headlines>
-              <Paragraph type='sub-title-text-dull'>Мы умеем и любим решать сложные задачи. Давай обсудим проект!</Paragraph>
+              <Headlines tag='h3'>{data && data.title_form}</Headlines>
+              <Paragraph type='sub-title-text-dull'>{data && data.description_form}</Paragraph>
               <Form />
             </div>
           </div>
@@ -219,7 +235,7 @@ function Home({ page }: HomeProps) {
         <section className={styles.questions}>
           <div className={styles.questionsWrapper}>
             <div>
-              <Headlines tag='h3'>Остались вопросы?</Headlines>
+              <Headlines tag='h3'>{data && data.title_questions}</Headlines>
               <Button>Обсудить проект</Button>
             </div>
           </div>
@@ -230,18 +246,19 @@ function Home({ page }: HomeProps) {
 }
 
 
-export const getStaticProps = async () => {
-  const { data: page } = await axios.get<HomeProps>(process.env.NEXT_PUBLIC_DOMAIN + URL_MAIN_PAGE);
-  return {
-    props: {
-      page
-    }
-  };
-};
+// export const getStaticPaths = async () => {
+//   const { data: page } = await axios.get<HomeProps>(process.env.NEXT_PUBLIC_DOMAIN + URL_SERVICE_PAGE);
+//   return {
+//     props: {
+//       page
+//     },
+//     fallback: false
+//   };
+// };
 
-export interface HomeProps extends Record<string, unknown> {
-  page: MainPage
-}
+// export interface HomeProps extends Record<string, unknown> {
+//   page: MainPage
+// }
 
 
 export default withLayout(Home)

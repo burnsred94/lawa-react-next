@@ -3,7 +3,7 @@ export default ({ env }) => ({
     client: "postgres",
     connection: {
       host: env("DATABASE_HOST", "postgres"),
-      port: env.int("DATABASE_PORT", 5432),
+      port: env.int("DATABASE_PORT", 50608),
       database: env("DATABASE_NAME", "strapi"),
       user: env("DATABASE_USERNAME", "strapi"),
       password: env("DATABASE_PASSWORD", "strapi"),
@@ -13,3 +13,5 @@ export default ({ env }) => ({
     debug: false,
   },
 });
+
+

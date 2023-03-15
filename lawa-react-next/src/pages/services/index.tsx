@@ -9,10 +9,17 @@ import { withLayout } from '@/layout/layout'
 import { partners, resultFirst, resultLast, resultList, service, sphere } from '@/mock/mock.data'
 
 import styles from './style.module.scss'
+import axios from 'axios'
+import { URL_SERVICE_PAGE } from '@/constants/constants'
+import { ServicePage } from '@/interfaces/service-page.interface'
+import { GetStaticPropsContext } from 'next'
+import { useEffect } from 'react'
 
 
-function Services ({ ...props }): JSX.Element {
+function Services (): JSX.Element {
   const route = useRouter()
+  
+  
 
   return (
     <>
@@ -159,5 +166,6 @@ function Services ({ ...props }): JSX.Element {
     </>
   )
 }
+
 
 export default withLayout(Services)

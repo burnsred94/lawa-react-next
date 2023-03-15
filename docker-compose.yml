@@ -27,6 +27,9 @@ services:
       - ${INFRA_API_PORT}:1337
     depends_on:
       - service-db
+    volumes:
+      - ./strapi-backend:/opt/
+      - /opt/node_modules
 
   service-db:
     container_name: $INFRA_DB_APP
@@ -48,22 +51,25 @@ services:
     ports:
       - ${INFRA_DB_ADMIN_PORT}:8081
 
-  # service-web:
-  #   container_name: $INFRA_WEB_APP
-  #   image: ${INFRA_WEB_IMAGE}:${INFRA_WEB_IMAGE_TAG:-latest}
-  #   build: 
-  #     context: ./lawa-react-next
-  #     dockerfile: Dockerfile
-  #   restart: unless-stopped
-  #   environment:
-  #     PORT: ${INFRA_WEB_PORT}
-  #     HOST: 0.0.0.0
-  #     NODE_ENV: development
-  #     WHOAMI_PORT_NUMBER: ${INFRA_WEB_PORT}
-  #     APP_API_URL: ${INFRA_API_URL}
-  #   ports:
-  #     - ${INFRA_WEB_PORT}:3000
-  #   depends_on:
-  #     - service-api
+  service-web:
+    container_name: $INFRA_WEB_APP
+    image: ${INFRA_WEB_IMAGE}:${INFRA_WEB_IMAGE_TAG:-latest}
+    build: 
+      context: ./lawa-react-next
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      PORT: ${INFRA_WEB_PORT}
+      HOST: 0.0.0.0
+      NODE_ENV: development
+      WHOAMI_PORT_NUMBER: ${INFRA_WEB_PORT}
+      APP_API_URL: ${INFRA_API_URL}
+    ports:
+      - ${INFRA_WEB_PORT}:3000
+    volumes:
+      - ./lawa-react-next:/app/
+      - /app/node_modules
+    depends_on:
+      - service-api
 
       

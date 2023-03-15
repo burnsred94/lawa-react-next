@@ -15,7 +15,6 @@ export const MenuComponent = ({ ...props }: MenuProps): JSX.Element => {
   const [active, setActive] = useState(false)
   const route = useRouter()
 
-  console.log(route)
 
   const firstLevelMenu = (menu: Menu[]) => {
     return (
