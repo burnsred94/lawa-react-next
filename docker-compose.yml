@@ -43,7 +43,7 @@ services:
       - ${INFRA_DB_PORT}
     command: "-p ${INFRA_DB_PORT}"
     volumes:
-      - $INFRA_DB_STORE:/var/lib/postgresql/data
+      - pg_data
   
   pgadmin:
     image: dpage/pgadmin4
@@ -80,4 +80,7 @@ services:
     depends_on:
       - service-api
 
-      
+volumes:
+  pg_data:
+    driver: local
+
