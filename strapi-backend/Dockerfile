@@ -1,21 +1,21 @@
+
 FROM node:16-alpine as build
 # Installing libvips-dev for sharp Compatibility
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev && rm -rf /var/cache/apk/* > /dev/null 2>&1
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev > /dev/null 2>&1
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
-COPY ./package.json ./package-lock.json ./
+COPY ./package.json ./yarn.lock ./
 ENV PATH /opt/node_modules/.bin:$PATH
-RUN npm install --production
+RUN yarn config set network-timeout 600000 -g && yarn install --production
 WORKDIR /opt/app
 COPY ./ .
-RUN npm run build
-
+RUN yarn build
+FROM node:16-alpine
+RUN apk add --no-cache vips-dev
 
 FROM node:16-alpine
-# Installing libvips-dev for sharp Compatibility
-RUN apk add vips-dev
-RUN rm -rf /var/cache/apk/*
+RUN apk add --no-cache vips-dev
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/app
@@ -23,4 +23,4 @@ COPY --from=build /opt/node_modules ./node_modules
 ENV PATH /opt/node_modules/.bin:$PATH
 COPY --from=build /opt/app ./
 EXPOSE 1337
-CMD ["npm", "run","start"]
+CMD ["yarn", "start"]
