@@ -28,8 +28,8 @@ services:
     depends_on:
       - service-db
     volumes:
-      - ./strapi-backend:/opt/
-      - /opt/node_modules
+      - ./strapi-backend:/opt/app
+      - /opt/app/node_modules
 
   service-db:
     container_name: $INFRA_DB_APP
