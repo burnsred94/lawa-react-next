@@ -6,7 +6,7 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/app
 COPY ./package.json ./package-lock.json ./
-ENV PATH /opt/node_modules/.bin:$PATH
+ENV PATH /opt/app/node_modules/.bin:$PATH
 RUN npm install --production
 WORKDIR /opt/app
 COPY ./ .
@@ -20,7 +20,7 @@ RUN rm -rf /var/cache/apk/*
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/app
-COPY --from=build /opt/node_modules ./node_modules
+COPY --from=build /opt/app/node_modules ./node_modules
 ENV PATH /opt/app/node_modules/.bin:$PATH
 COPY --from=build /opt/app ./
 EXPOSE 1337
