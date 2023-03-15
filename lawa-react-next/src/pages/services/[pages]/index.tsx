@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 
 import { Button, Headlines, Paragraph } from '@/components'
@@ -10,13 +10,30 @@ import { withLayout } from '@/layout/layout'
 import { cases, dataPages, resultFirst, resultLast, reviews } from '@/mock/mock.data'
 
 import styles from './style.module.scss'
+import axios from 'axios'
+import { URL_SERVICE_PAGE } from '@/constants/constants'
+import { ServicePage } from '@/interfaces/service-page.interface'
 
-function Page ({ ...props }): JSX.Element {
+ function Page  ({ ...props }): JSX.Element {
   const route = useRouter()
   const [activeReview, setActiveReview] = useState()
   const [active, setActive] = useState(0)
+  const [dataPage , setDataPage] = useState<ServicePage>()
   const data = dataPages.find((item) => item.slug === (route.asPath.split('/').pop()))
 
+  console.log(route)  
+
+  useEffect (()=> {
+    async function fetchData () {
+      try {
+        const {data} = await axios.get<ServicePage>(process.env.NEXT_PUBLIC_DOMAIN + URL_SERVICE_PAGE + route.asPath.split('/').pop());
+          setDataPage(data)
+      }catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
+  },[route.query])
 
 
   return (
@@ -24,7 +41,7 @@ function Page ({ ...props }): JSX.Element {
       <main>
         <section className={styles.header}>
           <div className={styles.headerWrapper}>
-            <Headlines tag='h1'>{data?.title}</Headlines>
+            <Headlines tag='h1'>{dataPage && dataPage.title}</Headlines>
           </div>
         </section>
         <section className={styles.breadCrumb}>
@@ -41,12 +58,12 @@ function Page ({ ...props }): JSX.Element {
             <div className={styles.resultList}>
               <div className={styles.resultTitle}>
                 <Headlines tag="h2">
-                  {data?.title}
+                  {dataPage && dataPage.title}
                 </Headlines>
               </div>
               <div className={styles.resultList}>
                 <Paragraph type='normal-text'>
-                  {data?.description}
+                  {dataPage && dataPage?.description}
                 </Paragraph>
                 <Button>Заказать услугу</Button>
               </div>
@@ -58,8 +75,8 @@ function Page ({ ...props }): JSX.Element {
           [styles.specificsGridAdaptive]: data?.all_research.length !== undefined && data?.all_research.length % 2 !== 0,
         })}>
           {
-            data?.all_research.map((item, key) => (
-              <Service key={key} type='specific-card' link={item.link} img={item.image} text={item.title}>{item.description}</Service>
+            dataPage && dataPage.sub_services.map((item, key) => (
+              <Service key={key} type='specific-card' link={route.query.pages + '/' + item.slug} img={item.img.url} text={item.title}>{item.description}</Service>
             ))
           }
         </section>
@@ -70,7 +87,7 @@ function Page ({ ...props }): JSX.Element {
                 Делаем мы
               </Headlines>
               <ul className={styles.processFirstItems}>
-                {data?.data_bp.first_list.map((listItem, key) => (
+                {dataPage?.table_we_and_you.we.map((listItem, key) => (
                   <li key={key}>{listItem}</li>
                 ))}
               </ul>
@@ -83,7 +100,7 @@ function Page ({ ...props }): JSX.Element {
                 Получаете вы
               </Headlines>
               <ul className={styles.processLastItems}>
-                {data?.data_bp.last_list.map((listItem, key) => (
+                {dataPage?.table_we_and_you.you.map((listItem, key) => (
                   <li key={key}>{listItem}</li>
                 ))}
               </ul>
@@ -96,12 +113,12 @@ function Page ({ ...props }): JSX.Element {
             <Button>Смотреть все работы</Button>
           </div>
           <div className={styles.casesCards}>
-            {cases.map((item, key) => (
+            {dataPage?.cases.map((item, key) => (
               <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === active,
                 [styles.casesNonActive]: key !== active
               })}>
-                <Service type='card-partners' img={item.img} link={item.link}>{item.title}</Service>
+                <Service type='card-partners'  img={item.img.url} link={item.link}>{item.description}</Service>
               </div>
             ))}
           </div>
@@ -119,16 +136,16 @@ function Page ({ ...props }): JSX.Element {
         </section>
         <section className={styles.cases}>
           <div className={styles.casesTitle}>
-            <Headlines tag='h2'>Отзывы</Headlines>
+            <Headlines tag='h2'>{dataPage?.title_review}</Headlines>
             <Button>Смотреть все Отзывы</Button>
           </div>
           <div className={styles.reviewCards}>
-            {reviews.map((item, key) => (
+            {dataPage?.reviews.map((item, key) => (
               <div key={key} className={cn(styles.casesDefualt, {
                 [styles.casesActive]: key === activeReview,
                 [styles.casesNonActive]: key !== activeReview
               })}>
-                <Service type='card-review' img={item.img} title={item.title} text={item.text} client_name={item.name_client} />
+                <Service type='card-review' img={item.img.url} title={item.post} text={item.description} client_name={item.name} />
               </div>
             ))}
           </div>
@@ -156,5 +173,8 @@ function Page ({ ...props }): JSX.Element {
     </>
   )
 }
+
+
+
 
 export default withLayout(Page)
