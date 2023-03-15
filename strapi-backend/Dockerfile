@@ -12,16 +12,23 @@
 # COPY ./ .
 # RUN npm run build
 
+FROM node:16-slim as dev-build
 
-FROM node:16-alpine
-# Installing libvips-dev for sharp Compatibility
-RUN apk add vips-dev
-RUN rm -rf /var/cache/apk/*
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+ENV NODE_ENV=development
+
+WORKDIR /opt/
+COPY ./package.json ./
+ENV PATH /opt/node_modules/.bin:$PATH
+
+RUN npm i
+
 WORKDIR /opt/app
-COPY --from=build /opt/app/node_modules ./node_modules
-ENV PATH /opt/app/node_modules/.bin:$PATH
-COPY --from=build /opt/app ./
+
+COPY ./ .
+
+RUN npm run build
+
 EXPOSE 1337
-CMD ["npm", "run","develop"]
+
+CMD ["npm", "run", "develop"]
+
