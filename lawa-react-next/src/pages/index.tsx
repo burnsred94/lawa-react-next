@@ -27,7 +27,7 @@ function Home() {
   useEffect (()=> {
     async function fetchData () {
       try {
-        const { data } = await axios.get<MainPage>(process.env.NEXT_PUBLIC_DOMAIN + URL_SERVICE_PAGE);
+        const { data } = await axios.get<MainPage>(process.env.NEXT_PUBLIC_DOMAIN + URL_MAIN_PAGE);
         if(data){
           setData(data)
         }

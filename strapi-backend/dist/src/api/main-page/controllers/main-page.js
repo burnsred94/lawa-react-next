@@ -9,6 +9,7 @@ exports.default = strapi_1.factories.createCoreController('api::main-page.main-p
         ctx.request.query = {
             populate: ['header_image', 'services.preview_img', 'approach_image', 'cases.image', 'approach_list.img', 'reviews.logo', 'trust_images'],
         };
+        console.log(ctx);
         const { data } = await super.find(ctx);
         const { attributes } = data;
         let apList = [];

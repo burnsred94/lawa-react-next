@@ -12,6 +12,8 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
          populate: ['header_image', 'services.preview_img', 'approach_image', 'cases.image', 'approach_list.img', 'reviews.logo', 'trust_images'],
        }
 
+       console.log(ctx)
+
        const { data } = await super.find(ctx)
        const { attributes } = data
 

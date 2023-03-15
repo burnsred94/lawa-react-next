@@ -45,11 +45,19 @@ services:
     volumes:
       - $INFRA_DB_STORE:/var/lib/postgresql/data
   
-  service-adminer:
-    container_name: $INFRA_DB_ADMIN
-    image: adminer:latest
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: admin
+    restart: always
     ports:
-      - ${INFRA_DB_ADMIN_PORT}:8081
+      - "5050:80"
+    depends_on:
+      - service-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: burnsred94@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: strapi
+    volumes:
+      - $INFRA_DB_STORE:/var/lib/postgresql/data
 
   service-web:
     container_name: $INFRA_WEB_APP
