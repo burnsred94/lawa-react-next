@@ -14,8 +14,8 @@ services:
     environment:
       PORT: $INFRA_API_PORT
       HOST: 0.0.0.0
-      # APP_URL: ${INFRA_API_URL}
-      # APP_ADMIN_URL: ${INFRA_API_ADMIN_URL}
+      APP_URL: ${INFRA_API_URL}
+      APP_ADMIN_URL: ${INFRA_API_ADMIN_URL}
       NODE_ENV: development
       WHOAMI_PORT_NUMBER: ${INFRA_API_PORT}
       DATABASE_HOST: ${INFRA_DB_APP}
