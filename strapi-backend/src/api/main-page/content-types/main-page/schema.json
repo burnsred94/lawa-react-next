@@ -13,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "text"
+      "type": "string"
     },
     "sub_title": {
       "type": "string"
@@ -49,17 +49,18 @@
       "type": "string"
     },
     "trust_images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "title_form": {
-      "type": "text"
+      "type": "string"
     },
     "description_form": {
       "type": "text"
@@ -69,6 +70,45 @@
     },
     "link_question": {
       "type": "string"
+    },
+    "header_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "approach_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title_cases": {
+      "type": "string"
+    },
+    "link_case": {
+      "type": "string"
+    },
+    "title_review": {
+      "type": "string"
+    },
+    "link_review": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
     }
   }
 }

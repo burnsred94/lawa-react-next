@@ -51,18 +51,6 @@
     "title_cases": {
       "type": "string"
     },
-    "cases": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::case.case",
-      "mappedBy": "sub_service"
-    },
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review",
-      "mappedBy": "sub_service"
-    },
     "title_review": {
       "type": "string"
     },
@@ -70,6 +58,39 @@
       "type": "component",
       "repeatable": false,
       "component": "other-blocks.qusetions-block"
+    },
+    "descr_preview": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "preview_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "review_link": {
+      "type": "string"
+    },
+    "cases_link": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
     }
   }
 }
