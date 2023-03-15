@@ -1,0 +1,114 @@
+{
+    "kind": "singleType",
+    "collectionName": "main_pages",
+    "info": {
+        "singularName": "main-page",
+        "pluralName": "main-pages",
+        "displayName": "Main Page",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "sub_title": {
+            "type": "string"
+        },
+        "time_work": {
+            "type": "string"
+        },
+        "title_services": {
+            "type": "string"
+        },
+        "services": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::service.service"
+        },
+        "title_approach": {
+            "type": "string"
+        },
+        "approach_list": {
+            "type": "component",
+            "repeatable": true,
+            "component": "list-approach.lists"
+        },
+        "slogan": {
+            "type": "text"
+        },
+        "cases": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::case.case"
+        },
+        "title_trust": {
+            "type": "string"
+        },
+        "trust_images": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "title_form": {
+            "type": "string"
+        },
+        "description_form": {
+            "type": "text"
+        },
+        "title_qustions": {
+            "type": "text"
+        },
+        "link_question": {
+            "type": "string"
+        },
+        "header_image": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "approach_image": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "title_cases": {
+            "type": "string"
+        },
+        "link_case": {
+            "type": "string"
+        },
+        "title_review": {
+            "type": "string"
+        },
+        "link_review": {
+            "type": "string"
+        },
+        "reviews": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::review.review"
+        }
+    }
+}

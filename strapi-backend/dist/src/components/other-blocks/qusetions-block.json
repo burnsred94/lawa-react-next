@@ -1,0 +1,15 @@
+{
+    "collectionName": "components_other_blocks_qusetions_blocks",
+    "info": {
+        "displayName": "QusetionsBlock"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "link": {
+            "type": "string"
+        }
+    }
+}

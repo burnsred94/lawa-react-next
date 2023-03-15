@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_list_approach_lists",
+    "info": {
+        "displayName": "Lists"
+    },
+    "options": {},
+    "attributes": {
+        "img": {
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ],
+            "type": "media",
+            "multiple": false
+        },
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        }
+    }
+}

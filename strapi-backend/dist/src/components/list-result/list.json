@@ -1,0 +1,22 @@
+{
+    "collectionName": "components_list_result_lists",
+    "info": {
+        "displayName": "List"
+    },
+    "options": {},
+    "attributes": {
+        "img": {
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ],
+            "type": "media",
+            "multiple": false
+        },
+        "description": {
+            "type": "text"
+        }
+    }
+}

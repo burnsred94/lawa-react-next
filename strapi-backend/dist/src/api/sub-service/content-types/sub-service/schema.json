@@ -1,0 +1,96 @@
+{
+    "kind": "collectionType",
+    "collectionName": "sub_services",
+    "info": {
+        "singularName": "sub-service",
+        "pluralName": "sub-services",
+        "displayName": "SubService",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title_header": {
+            "type": "string"
+        },
+        "service": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::service.service",
+            "inversedBy": "sub_services"
+        },
+        "images": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "list": {
+            "type": "component",
+            "repeatable": true,
+            "component": "list-sub-service.list"
+        },
+        "table": {
+            "type": "component",
+            "repeatable": false,
+            "component": "we-and-you.table"
+        },
+        "title_cases": {
+            "type": "string"
+        },
+        "title_review": {
+            "type": "string"
+        },
+        "questions": {
+            "type": "component",
+            "repeatable": false,
+            "component": "other-blocks.qusetions-block"
+        },
+        "descr_preview": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "string"
+        },
+        "preview_img": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "review_link": {
+            "type": "string"
+        },
+        "cases_link": {
+            "type": "string"
+        },
+        "reviews": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::review.review"
+        },
+        "cases": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::case.case"
+        }
+    }
+}
