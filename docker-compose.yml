@@ -43,7 +43,7 @@ services:
       - ${INFRA_DB_PORT}
     command: "-p ${INFRA_DB_PORT}"
     volumes:
-      - pg_data
+      - $INFRA_DB_STORE:/var/lib/postgresql/data
   
   pgadmin:
     image: dpage/pgadmin4
@@ -57,7 +57,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: burnsred94@gmail.com
       PGADMIN_DEFAULT_PASSWORD: strapi
     volumes:
-      - $INFRA_DB_STORE:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
 
   service-web:
     container_name: $INFRA_WEB_APP
