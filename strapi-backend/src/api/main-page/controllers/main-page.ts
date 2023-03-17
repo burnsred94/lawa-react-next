@@ -12,13 +12,14 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
          populate: ['header_image', 'services.preview_img', 'approach_image', 'cases.image', 'approach_list.img', 'reviews.logo', 'trust_images'],
        }
 
-       console.log(ctx)
 
        const { data } = await super.find(ctx)
+       console.log(data)
        const { attributes } = data
 
        let apList = [];
-       attributes.approach_list.map((item) => {
+       console.log(attributes.approach_list)
+       attributes.approach_list !== null ? attributes.approach_list.map((item) => {
           apList.push({
             id: item.id,
             title: item.title,
@@ -28,10 +29,10 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
               url: item.img.data.attributes.url
             }
           })
-       });
+       }) : null
 
        let revList = [];
-       attributes.reviews.data.map((item) => {
+       attributes.reviews.data !== null ? attributes.reviews.data.map((item) => {
         revList.push({
             id: item.id,
             name: item.attributes.name,
@@ -43,19 +44,19 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
               url: item.attributes.logo.data.attributes.url
             }
           })
-       })
+       }) : null
 
        let trustArr = [];
-       attributes.trust_images.data.map((item) => {
+       attributes.trust_images.data !== null ? attributes.trust_images.data.map((item) => {
           trustArr.push({
             id: item.id,
             name: item.attributes.name,
             url: item.attributes.url
           })
-       });
+       }) : null
 
        let serviceArr = [];
-       attributes.services.data.map((item) => {
+       attributes.services !== null ? attributes.services.data.map((item) => {
         serviceArr.push({
             id: item.id,
             title: item.attributes.title,
@@ -66,10 +67,10 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
             },
 
           })
-       });
+       }) : null
 
        let caseArr = [];
-       attributes.cases.data.map((item) => {
+       attributes.cases !== null ? attributes.cases.data.map((item) => {
         caseArr.push({
           id: item.id,
           description: item.attributes.description,
@@ -79,39 +80,40 @@ export default factories.createCoreController('api::main-page.main-page', ({stra
             url: item.attributes.image.data.attributes.url
           }
         })
-       });
-       console.log(caseArr)
+       }) : null
 
-       return {
-        title: attributes.title,
-        sub_title: attributes.sub_title,
-        time_work: attributes.time_work,
-        header_img: {
+       const dataset = {
+        title: attributes.title !== null ? attributes.title: '' ,
+        sub_title: attributes.sub_title !== null ? attributes.sub_title: '',
+        time_work: attributes.time_work !== null ? attributes.time_work: '',
+        header_img: attributes.header_image.data !== null ? {
           name: attributes.header_image.data.attributes.name,
           url: attributes.header_image.data.attributes.url,
-        },
-        title_services: attributes.title_services,
+        }: null,
+        title_services: attributes.title_services !== null ?  attributes.title_services : '',
         services: serviceArr,
-        title_approach: attributes.title_approach,
+        title_approach: attributes.title_approach !== null ? attributes.title_approach  : '',
         approach_image: {
-          name: attributes.approach_image.data.attributes.name,
-          url: attributes.approach_image.data.attributes.url,
+          name: attributes.approach_image.data !== null ? attributes.approach_image.data.attributes.name : '',
+          url: attributes.approach_image.data !== null ? attributes.approach_image.data.attributes.url : '',
         },
         approach_list: apList,
-        slogan: attributes.slogan,
-        title_form: attributes.title_form,
-        description_form: attributes.description_form,
-        title_cases: attributes.title_cases,
-        link_case: attributes.link_case,
+        slogan: attributes.slogan !== null ? attributes.slogan  : '',
+        title_form: attributes.title_form !== null ? attributes.title_form  : '',
+        description_form: attributes.description_form !== null ? attributes.description_form  : '',
+        title_cases: attributes.title_cases !== null ? attributes.title_cases  : '',
+        link_case: attributes.link_case !== null ? attributes.link_case  : '',
         case: caseArr,
-        title_review: attributes.title_review,
-        link_review: attributes.link_review,
+        title_review: attributes.title_review !== null ? attributes.title_review  : '',
+        link_review: attributes.link_review !== null ? attributes.link_review  : '',
         reviews: revList,
-        title_trust: attributes.title_trust,
+        title_trust: attributes.title_trust !== null ? attributes.title_trust  : '',
         trust_images: trustArr,
-        title_questions: attributes.title_qustions,
-        link_question: attributes.link_question
+        title_questions: attributes.title_qustions !== null ? attributes.title_qustions  : '',
+        link_question: attributes.link_question !== null ? attributes.link_question  : '',
       }
 
+      console.log(dataset);
+      return dataset;
     }
 }));
