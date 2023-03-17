@@ -8,7 +8,7 @@ import { Context } from 'koa';
 
 export default factories.createCoreController('api::service.service', ({strapi}: {strapi: Strapi}) => ({
     async top (ctx: Context) {
-      console.log(ctx.params);
+
         const data = await strapi.db.query('api::service.service').findOne({
           where: {
             slug: ctx.params.slug,
@@ -22,10 +22,9 @@ export default factories.createCoreController('api::service.service', ({strapi}:
             "reviews.logo",
           ]
         })
-        console.log(data.table_we_and_you)
 
         let subSer = [];
-        data.sub_services.map((item) => {
+        data.sub_services ? data.sub_services.map((item) => {
           subSer.push({
             id: item.id,
             title: item.title,
@@ -35,21 +34,21 @@ export default factories.createCoreController('api::service.service', ({strapi}:
               name: item.preview_img.name,
               url: item.preview_img.url,
             }
-          });
-        })
+          })
+        }): null
 
         let weT = [];
-        data.table_we_and_you.We.map((item) => {
+        data.table_we_and_you ? data.table_we_and_you.We.map((item) => {
           weT.push(item.text)
-        })
+        }): null
 
         let youT = [];
-        data.table_we_and_you.You.map((item) => {
+        data.table_we_and_you ? data.table_we_and_you.You.map((item) => {
           youT.push(item.text)
-        })
+        }): null
 
         let casesArr = [];
-        data.cases.map((item) => {
+        data.cases ? data.cases.map((item) => {
           casesArr.push({
             id: item.id,
             description: item.description,
@@ -59,10 +58,10 @@ export default factories.createCoreController('api::service.service', ({strapi}:
               url: item.image.url,
             }
           })
-        })
+        }): null
 
         let reviewsArr = [];
-        data.reviews.map((item) => {
+        data.reviews ? data.reviews.map((item) => {
           reviewsArr.push({
             id: item.id,
             description: item.description,
@@ -74,35 +73,36 @@ export default factories.createCoreController('api::service.service', ({strapi}:
               url: item.logo.url,
             }
           })
-        })
+        }): null
+
 
         return {
-          title: data.title,
-          title_service: data.title_service,
-          description: data.description,
-          link_service: data.link_service,
+          title: data.title ? data.title : '',
+          title_service: data.title_service ? data.title_service : '',
+          description: data.description ? data.description : '',
+          link_service: data.link_service ? data.link_service : '',
           preview_img: {
-            name: data.preview_img.name,
-            url: data.preview_img.url,
+            name: data.preview_img.name ? data.preview_img.name : '',
+            url: data.preview_img.url ? data.preview_img.url : '',
           },
           sub_services: subSer,
           table_we_and_you: {
-            we_title: data.title_we,
+            we_title: data.title_we ? data.title_we : '',
             we: weT,
             img: {
-              name: data.table_we_and_you.img.name,
-              url: data.table_we_and_you.img.url,
+              name: data.table_we_and_you.img.name ? data.table_we_and_you.img.name : '',
+              url: data.table_we_and_you.img.url ? data.table_we_and_you.img.url : '',
             },
-            you_title: data.title_you,
+            you_title: data.title_you ? data.title_you  : '',
             you: youT
           },
-          title_cases: data.title_cases,
-          cases_link: data.cases_link,
+          title_cases: data.title_cases ? data.title_cases  : '',
+          cases_link: data.cases_link ? data.cases_link  : '',
           cases: casesArr,
-          title_review: data.title_review,
-          link_review: data.link_review,
+          title_review: data.title_review ? data.title_review  : '',
+          link_review: data.link_review ? data.link_review  : '',
           reviews:reviewsArr,
-          questions: data.questions,
+          questions: data.questions ? data.questions  : '',
         }
 
     }
