@@ -15,13 +15,17 @@ export default factories.createCoreController('api::sub-service.sub-service', ({
         populate: [
           "preview_img",
           "sub_services.preview_img",
+          "sub_service_items.image_preview",
           "table_we_and_you.img",
-          "table",
+          "table.img",
           "cases.image",
           "reviews.logo",
-          "list",
+          "list.img",
           "questions",
-          "images"
+          "images",
+          "seo.image",
+          "images.img"
+
         ]
       })
 

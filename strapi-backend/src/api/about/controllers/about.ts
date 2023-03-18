@@ -10,7 +10,7 @@ export default factories.createCoreController('api::about.about', ({ strapi }: {
   async find(ctx: Context) {
     return await strapi.db.query('api::about.about').findMany(
       {
-        populate: ['images', 'image_director', "executives.img", "questions"]
+        populate: ['images', 'image_director', "executives.img", "questions", "seo.image", 'questions']
       }
     )
   }

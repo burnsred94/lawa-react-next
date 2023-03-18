@@ -10,7 +10,15 @@ export default factories.createCoreController('api::service-page.service-page', 
 
   async find(ctx: Context) {
     return await strapi.db.query('api::service-page.service-page').findMany({
-      populate: ['services.preview_img', 'spheres.img', 'images_result', 'list_result.img', 'table.img', 'trust_images.img',]
+      populate: [
+        'services.preview_img',
+        'spheres.img',
+        'images_result',
+        'list_result.img',
+        'table.img',
+        'trust_images.img',
+        'seo.image'
+      ]
     })
   }
 

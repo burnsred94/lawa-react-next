@@ -20,6 +20,9 @@ export default factories.createCoreController('api::service.service', ({ strapi 
         "table",
         "cases.image",
         "reviews.logo",
+        "seo.image",
+        'images',
+
       ]
     })
 

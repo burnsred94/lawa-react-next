@@ -17,7 +17,18 @@ export default factories.createCoreController('api::main-page.main-page', ({ str
       where: {
         id: 1
       },
-      populate: ['header_image', 'services.preview_img', 'approach_image', 'cases.image', 'approach_list.img', 'reviews.logo', 'trust_images']
+      populate: [
+        'header_image',
+        'services.preview_img',
+        'approach_image',
+        'cases.image',
+        'approach_list.img',
+        'reviews.logo',
+        'trust_images',
+        'social.img',
+        'questions',
+        'seo',
+      ]
     })
   }
 
