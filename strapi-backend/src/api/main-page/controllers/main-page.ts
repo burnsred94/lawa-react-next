@@ -27,7 +27,7 @@ export default factories.createCoreController('api::main-page.main-page', ({ str
         'trust_images',
         'social.img',
         'questions',
-        'seo',
+        'seo.image',
       ]
     })
   }
