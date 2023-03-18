@@ -4,7 +4,8 @@
   "info": {
     "singularName": "our-work",
     "pluralName": "our-works",
-    "displayName": "Our work"
+    "displayName": "Our work",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,11 @@
       "type": "component",
       "repeatable": false,
       "component": "other-blocks.qusetions-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
     }
   }
 }

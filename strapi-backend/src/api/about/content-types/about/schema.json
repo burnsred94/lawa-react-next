@@ -70,6 +70,11 @@
       "type": "component",
       "repeatable": false,
       "component": "other-blocks.qusetions-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "other-blocks.seo"
     }
   }
 }

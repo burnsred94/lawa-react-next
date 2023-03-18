@@ -32,9 +32,6 @@
     "description": {
       "type": "text"
     },
-    "link_service": {
-      "type": "string"
-    },
     "cases": {
       "type": "relation",
       "relation": "oneToMany",
@@ -66,6 +63,22 @@
       "type": "string"
     },
     "preview_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "other-blocks.seo"
+    },
+    "images": {
       "allowedTypes": [
         "images",
         "files",
@@ -73,7 +86,7 @@
         "audios"
       ],
       "type": "media",
-      "multiple": false
+      "multiple": true
     }
   }
 }

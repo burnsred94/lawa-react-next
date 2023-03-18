@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_other_blocks_seos",
+  "info": {
+    "displayName": "Seo"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "bottom_title": {
+      "type": "string"
+    },
+    "bottom_description": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "lead": {
+      "type": "string"
+    }
+  }
+}

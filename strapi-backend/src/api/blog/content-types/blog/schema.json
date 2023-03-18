@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blog"
+    "displayName": "Blog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,6 +24,11 @@
       "type": "component",
       "repeatable": true,
       "component": "other-blocks.qusetions-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
     }
   }
 }

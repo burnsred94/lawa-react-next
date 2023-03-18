@@ -91,6 +91,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::case.case"
+    },
+    "sub_service_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-service-item.sub-service-item"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
     }
   }
 }

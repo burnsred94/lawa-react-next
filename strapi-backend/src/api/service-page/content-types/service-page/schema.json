@@ -38,14 +38,15 @@
       "type": "string"
     },
     "images_result": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "list_result": {
       "type": "component",
@@ -58,14 +59,15 @@
       "component": "we-and-you.table"
     },
     "trust_images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "title_images": {
       "type": "string"
@@ -75,6 +77,11 @@
     },
     "link_question": {
       "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "other-blocks.seo"
     }
   }
 }

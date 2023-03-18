@@ -65,12 +65,6 @@
     "description_form": {
       "type": "text"
     },
-    "title_qustions": {
-      "type": "text"
-    },
-    "link_question": {
-      "type": "string"
-    },
     "header_image": {
       "type": "media",
       "multiple": false,
@@ -109,6 +103,21 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::review.review"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "other-blocks.social"
+    },
+    "questions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
     }
   }
 }

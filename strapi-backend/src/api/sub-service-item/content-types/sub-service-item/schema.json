@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_service_items",
+  "info": {
+    "singularName": "sub-service-item",
+    "pluralName": "sub-service-items",
+    "displayName": "SubServiceItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "decsription_preview": {
+      "type": "string"
+    },
+    "image_preview": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "arsenal": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-approach.lists"
+    },
+    "we_and_you": {
+      "type": "component",
+      "repeatable": false,
+      "component": "we-and-you.table"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "questions": {
+      "type": "string"
+    },
+    "question_link": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "review_link": {
+      "type": "string"
+    },
+    "cases_link": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    }
+  }
+}

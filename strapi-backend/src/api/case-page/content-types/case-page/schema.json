@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "case_pages",
+  "info": {
+    "singularName": "case-page",
+    "pluralName": "case-pages",
+    "displayName": "Case Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    },
+    "description": {
+      "type": "text"
+    },
+    "questions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    }
+  }
+}
