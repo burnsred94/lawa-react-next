@@ -25,6 +25,14 @@ services:
       - ${INFRA_API_PORT}:1337
     depends_on:
       - service-db
+    volumes:
+      - $INFRA_API_PATH/database:/opt/app/database
+      - $INFRA_API_PATH/config:/opt/app/config
+      - $INFRA_API_PATH/src:/opt/app/src
+      - $INFRA_API_PATH/package.json:/opt/app/package.json
+      - $INFRA_API_PATH/.env:/opt/app/.env
+      - $INFRA_UPLOADS:/opt/app/public/uploads
+
 
   service-db:
     container_name: $INFRA_DB_APP
