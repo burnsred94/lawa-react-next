@@ -95,7 +95,8 @@
     "sub_service_items": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::sub-service-item.sub-service-item"
+      "target": "api::sub-service-item.sub-service-item",
+      "mappedBy": "sub_service"
     },
     "seo": {
       "type": "component",
