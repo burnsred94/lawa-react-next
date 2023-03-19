@@ -24,7 +24,8 @@ export default factories.createCoreController('api::sub-service.sub-service', ({
           "questions",
           "images",
           "seo.image",
-          "images.img"
+          "images.img",
+          "service"
 
         ]
       })
