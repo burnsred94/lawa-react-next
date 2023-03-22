@@ -10,7 +10,10 @@ export default factories.createCoreController('api::sub-service-item.sub-service
   async top(ctx: Context){
     return await strapi.db.query('api::sub-service-item.sub-service-item').findOne({
       where: {
-        slug: ctx.params.slug
+        slug: ctx.params.slug,
+        publishedAt: {
+          $notNull: true
+        }
       },
       populate: ['images', 'arsenal.img', 'we_and_you.img', 'cases.image', 'reviews.logo', 'seo.image', 'sub_service', "service"]
     })
