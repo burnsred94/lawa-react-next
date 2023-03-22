@@ -12,11 +12,7 @@ export default factories.createCoreController('api::service.service', ({ strapi 
     return await strapi.db.query('api::service.service').findOne({
       where: {
         slug: ctx.params.slug,
-        sub_services: {
-          publishedAt: {
-            $notNull: true
-          }
-        }
+
       },
       populate: [
         "preview_img",

@@ -10,13 +10,6 @@ export default factories.createCoreController('api::service-page.service-page', 
 
   async find(ctx: Context) {
      return  await strapi.db.query('api::service-page.service-page').findMany({
-      where: {
-        services: {
-          publishedAt: {
-            $notNull: true,
-          }
-        }
-      },
       populate: [
         'services.preview_img',
         'spheres.img',
