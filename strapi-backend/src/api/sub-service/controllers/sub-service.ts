@@ -11,8 +11,10 @@ export default factories.createCoreController('api::sub-service.sub-service', ({
       return await strapi.db.query('api::sub-service.sub-service').findOne({
         where: {
           slug: ctx.params.slug,
-          publishedAt: {
-            $notNull: true
+          sub_service_items: {
+            publishedAt: {
+              $notNull: true
+            }
           }
         },
         populate: [

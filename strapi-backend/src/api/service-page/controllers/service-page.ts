@@ -9,10 +9,12 @@ import { Context } from "koa";
 export default factories.createCoreController('api::service-page.service-page', ({ strapi }: { strapi: Strapi }) => ({
 
   async find(ctx: Context) {
-    return await strapi.db.query('api::service-page.service-page').findMany({
+     return  await strapi.db.query('api::service-page.service-page').findMany({
       where: {
-        publishedAt: {
-          $notNull: true
+        services: {
+          publishedAt: {
+            $notNull: true,
+          }
         }
       },
       populate: [
