@@ -22,7 +22,7 @@
     },
     "question": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "other-blocks.qusetions-block"
     },
     "seo": {
