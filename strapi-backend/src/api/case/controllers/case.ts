@@ -14,7 +14,10 @@ export default factories.createCoreController('api::case.case', ({ strapi }: { s
         link: ctx.params.slug
       },
       populate: [
-        "image"
+        "image",
+        "seo",
+        "slider_images",
+        "questions"
       ]
     })
   }
