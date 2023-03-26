@@ -27,13 +27,24 @@
       ]
     },
     "name": {
-      "type": "text"
+      "type": "string"
     },
     "post": {
       "type": "string"
     },
     "link": {
       "type": "string"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
