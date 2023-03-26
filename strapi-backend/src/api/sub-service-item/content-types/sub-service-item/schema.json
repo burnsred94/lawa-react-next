@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "decsription_preview": {
       "type": "string"
     },
@@ -93,6 +90,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::service.service"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

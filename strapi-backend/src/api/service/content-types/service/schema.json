@@ -29,9 +29,6 @@
     "title_service": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "cases": {
       "type": "relation",
       "relation": "oneToMany",
@@ -88,6 +85,9 @@
         "videos",
         "audios"
       ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

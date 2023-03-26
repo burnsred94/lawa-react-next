@@ -23,11 +23,38 @@
         "audios"
       ]
     },
-    "description": {
+    "description_preview": {
       "type": "text"
     },
     "link": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    },
+    "questions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
+    },
+    "slider_images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
