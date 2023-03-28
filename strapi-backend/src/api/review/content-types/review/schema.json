@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "description": {
+    "description_preview": {
       "type": "text"
     },
     "logo": {
@@ -45,6 +45,19 @@
         "videos",
         "audios"
       ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    },
+    "question": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
     }
   }
 }

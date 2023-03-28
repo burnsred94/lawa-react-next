@@ -4,7 +4,8 @@
   "info": {
     "singularName": "mail",
     "pluralName": "mails",
-    "displayName": "Mail"
+    "displayName": "Mail",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,9 @@
     },
     "text_mail": {
       "type": "text"
+    },
+    "date": {
+      "type": "datetime"
     }
   }
 }
