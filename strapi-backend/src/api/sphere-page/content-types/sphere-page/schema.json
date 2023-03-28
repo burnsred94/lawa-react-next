@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "sphere_pages",
+  "info": {
+    "singularName": "sphere-page",
+    "pluralName": "sphere-pages",
+    "displayName": "SpherePage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "images_header": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "we_and_you": {
+      "type": "component",
+      "repeatable": false,
+      "component": "we-and-you.table"
+    },
+    "title_cases": {
+      "type": "string"
+    },
+    "link_cases": {
+      "type": "string"
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    },
+    "review_title": {
+      "type": "string"
+    },
+    "review_link": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "question": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    }
+  }
+}

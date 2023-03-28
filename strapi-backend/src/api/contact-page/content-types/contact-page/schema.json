@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-page",
     "pluralName": "contact-pages",
-    "displayName": "Contact Page"
+    "displayName": "Contact Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,11 @@
     },
     "contacts": {
       "type": "json"
+    },
+    "question": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
     }
   }
 }
