@@ -4,7 +4,7 @@
   "info": {
     "singularName": "sphere",
     "pluralName": "spheres",
-    "displayName": "sphere",
+    "displayName": "Sphere",
     "description": ""
   },
   "options": {
@@ -19,6 +19,55 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::service.service"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.seo"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "cases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case.case"
+    },
+    "case_title": {
+      "type": "string"
+    },
+    "case_link": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "review_title": {
+      "type": "string"
+    },
+    "review_link": {
+      "type": "string"
+    },
+    "question": {
+      "type": "component",
+      "repeatable": false,
+      "component": "other-blocks.qusetions-block"
     }
   }
 }

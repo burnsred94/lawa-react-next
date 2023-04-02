@@ -16,22 +16,18 @@
       "type": "string"
     },
     "images_header": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "description": {
       "type": "richtext"
-    },
-    "services": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::service.service"
     },
     "we_and_you": {
       "type": "component",
@@ -69,6 +65,11 @@
       "type": "component",
       "repeatable": false,
       "component": "other-blocks.seo"
+    },
+    "spheres": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-sphere.list"
     }
   }
 }
