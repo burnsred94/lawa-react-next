@@ -11,7 +11,8 @@ export default factories.createCoreController('api::sphere-page.sphere-page', ({
     return await strapi.db.query('api::sphere-page.sphere-page').findMany({
       populate: [
         "images_header",
-        "services.preview_img",
+        "spheres.img",
+        "spheres.sphere",
         "we_and_you.img",
         "cases.image",
         "reviews.logo",
