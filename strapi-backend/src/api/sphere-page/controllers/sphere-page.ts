@@ -17,7 +17,8 @@ export default factories.createCoreController('api::sphere-page.sphere-page', ({
         "cases.image",
         "reviews.logo",
         "question",
-        "seo.image"
+        "seo.image",
+        "list_result.img"
 
       ]
     })

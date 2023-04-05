@@ -18,8 +18,7 @@ export default factories.createCoreController('api::sphere.sphere', ({ strapi }:
         "reviews.logo",
         "seo.image",
         "we_and_you.img",
-        "question",
-        "list_result.img"
+        "question"
       ]
     })
   }
