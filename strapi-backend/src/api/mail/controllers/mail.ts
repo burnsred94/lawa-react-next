@@ -11,7 +11,7 @@ export default factories.createCoreController('api::mail.mail', ({ strapi }: { s
 
     await strapi.plugins['email'].services.email.send({
       to: 'hello@lawa.by',
-      from: 'someone2@example.com',
+      from: ctx.request.body.email,
       subject: ctx.request.body.name,
       text: ctx.request.body.text_mail,
       html: `<h4>${ctx.request.body.name}</h4><p>${ctx.request.body.text_mail}</p><span>${ctx.request.body.phone_number}</span>`,
