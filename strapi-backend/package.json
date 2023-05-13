@@ -10,12 +10,14 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.7.1",
-    "@strapi/plugin-users-permissions": "4.7.1",
-    "@strapi/strapi": "4.7.1",
-    "@strapi/typescript-utils": "^4.7.1",
+    "@strapi/plugin-i18n": "4.10.4",
+    "@strapi/plugin-users-permissions": "4.10.4",
+    "@strapi/provider-email-nodemailer": "^4.10.4",
+    "@strapi/strapi": "4.10.4",
+    "@strapi/typescript-utils": "^4.10.4",
     "better-sqlite3": "8.0.1",
     "pg": "^8.10.0",
+    "strapi-plugin-local-image-sharp": "^1.6.0",
     "strapi-plugin-sitemap": "^2.0.9",
     "strapi-plugin-wysiwyg-react-md-editor": "^4.3.0"
   },
