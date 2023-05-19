@@ -20,7 +20,7 @@ export default factories.createCoreController('api::main-page.main-page', ({ str
       populate: [
         'header_image',
         'services.preview_img',
-        'approach_image',
+        'approach_images',
         'cases.image',
         'approach_list.img',
         'reviews.logo',
