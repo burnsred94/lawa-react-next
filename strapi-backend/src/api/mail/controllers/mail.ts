@@ -7,14 +7,14 @@ import { Context } from 'koa'
 
 export default factories.createCoreController('api::mail.mail', ({ strapi }: { strapi: Strapi }) => ({
   async create(ctx: Context) {
-    const { } = ctx.request.body
+    const { data } = ctx.request.body
 
     await strapi.plugins['email'].services.email.send({
       to: 'hello@lawa.by',
-      from: ctx.request.body.email,
-      subject: ctx.request.body.name,
-      text: ctx.request.body.text_mail,
-      html: `<h4>${ctx.request.body.name}</h4><p>${ctx.request.body.text_mail}</p><span>${ctx.request.body.phone_number}</span>`,
+      from: data.email,
+      subject: data.name,
+      text: data.text_mail,
+      html: `<h4>${data.name}</h4><p>${data.text_mail}</p><span>${data.phone_number}</span>`,
     });
 
     return await super.create(ctx)
