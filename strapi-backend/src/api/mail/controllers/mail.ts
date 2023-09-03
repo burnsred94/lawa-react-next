@@ -14,7 +14,7 @@ export default factories.createCoreController('api::mail.mail', ({ strapi }: { s
       from: data.email,
       subject: data.name,
       text: data.text_mail,
-      html: `<h4>${data.name}</h4><p>${data.text_mail}</p><span>${data.phone_number}</span>`,
+      html: `<h4>${data.name}</h4><p>${data.text_mail}</p><span>${data.phone_number}</span><span>${data.url_site}</span>`,
     });
 
     return await super.create(ctx)
